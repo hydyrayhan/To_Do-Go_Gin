@@ -1,1 +1,49 @@
+# Binary builds (Standard Go output)
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+# This ignores the main binary if named after the folder
+3. To-Do app with GIN
+
+# Dependency management
+# Only ignore vendor/ if you aren't using Go Modules
+# vendor/
+
+# Environment variables (CRITICAL for JWT secrets)
 .env
+.env.local
+config.yaml
+config.json
+# If you have a specific secrets file:
+secrets.go
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE - VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# IDE - JetBrains (GoLand)
+.idea/
+
+# Testing and Logs
+*.test
+*.out
+*.log
+coverage.txt
+
+# Temporary files
+tmp/
+drush-backups/
