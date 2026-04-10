@@ -2,11 +2,13 @@ package main
 
 import (
 	"log"
+	"time"
 	"todo_api/config"
 	"todo_api/internal/database"
 	"todo_api/internal/handlers"
 	"todo_api/internal/middleware"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/jackc/pgx/v5/pgxpool"
 )
@@ -31,6 +33,14 @@ func main() {
 	defer pool.Close()
 
 	var router *gin.Engine = gin.Default()
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"*"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Accepts", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
 	router.SetTrustedProxies(nil)
 	router.GET("/", func(ctx *gin.Context) {
 		ctx.JSON(200, gin.H{
