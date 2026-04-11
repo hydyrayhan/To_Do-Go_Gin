@@ -43,7 +43,9 @@ Desktop.ini
 *.out
 *.log
 coverage.txt
-
+tmp/
 # Temporary files
 tmp/
+tmp2/
+
 drush-backups/
